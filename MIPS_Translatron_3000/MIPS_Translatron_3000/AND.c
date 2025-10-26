@@ -76,10 +76,10 @@ void and_reg_assm(void) {
 	// Set the funct 
 	setBits_str(5, "100100");
 
-	// set Rd
+	// set Rd FIXED
 	setBits_num(15, PARAM1.value, 5);
 
-	// set Rs
+	// set Rs FIXED
 	setBits_num(25, PARAM2.value, 5);
 
 	// set Rt

@@ -1,10 +1,12 @@
 /*
-* Author: Ol' Jim
-* Date: 06/13/2012
-* ByteForge Systems
-* MIPS-Translatron 3000
+* Author: Brady
+* Date: 10/26/2025
 */
 
+/*
+* CHANGELIST
+* - Nothing? Can someone check this too
+*/
 
 #include "Instruction.h"
 

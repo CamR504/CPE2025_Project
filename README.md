@@ -11,6 +11,12 @@ ADD, BNE, ADDI
 
 *DONE* (solved)
 SUB (was not writting the correct final 6 bits in the opcode, corrected)
+LW (Comments)
+LUI (Comments)
+DIV (Comments)
+AND (Comments and fixed opcode locations for Rs/Rt)
+ANDI (Comments)
+BEQ (Comments)
 
 TO DO:
-AND, ANDI, BEQ, DIV, LUI, LW, MFHI, MFLO, MULT, OR, ORI, SLT, SLTI, SW
+MFHI, MFLO, MULT, OR, ORI, SLT, SLTI, SW

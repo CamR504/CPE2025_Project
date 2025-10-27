@@ -71,7 +71,9 @@ void sub_reg_assm(void) {
 	setBits_num(31, 0, 6);
 
 	// Set the funct 
-	setBits_str(5, "100010");
+	/*FIXED
+	adjusted bits from 100010 to 100100 for proper binary output*/
+	setBits_str(5, "100100");
 
 	// set Rd
 	setBits_num(15, PARAM1.value, 5);

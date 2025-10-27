@@ -1,2 +1,16 @@
 # CPE2025_Project
 C based project for WVU's CPE 310 class
+use below to set file path in powershell terminal
+Set-Location -Path "[inner MIPS_Translatron_3000 file path]"
+
+use below to compile an exe file to test code
+gcc ADD.c ADDI.c AND.c ANDI.c BEQ.c BNE.c DIV.c LUI.c LW.c MFHI.c MFLO.c MIPS_Instruction.c MIPS_Interpreter.c MULT.c OR.c ORI.c SLT.c SLTI.c SUB.c SW.c -o MIPS_Interpreter.exe
+
+*DONE* (examples)
+ADD, BNE, ADDI
+
+*DONE* (solved)
+SUB (was not writting the correct final 6 bits in the opcode, corrected)
+
+TO DO:
+AND, ANDI, BEQ, DIV, LUI, LW, MFHI, MFLO, MULT, OR, ORI, SLT, SLTI, SW

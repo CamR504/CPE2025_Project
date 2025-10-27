@@ -5,7 +5,7 @@
 
 /*
 * CHANGELIST
-* - Nothing? Can someone check this too
+* - Fixed Opcode check in decoding section
 */
 
 #include "Instruction.h"
@@ -89,7 +89,7 @@ void beq_immd_bin(void) {
 		//  any x will be skipped
 		// ignore previous instructions, the only bug is Rt and Rs swapped
 		// If the manual shows (0), then the value of that bit doesnt matter
-	if (checkBits(31, "001000") != 0) {
+	if (checkBits(31, "000100") != 0) {
 		state = WRONG_COMMAND;
 		return;
 	}

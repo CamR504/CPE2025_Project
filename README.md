@@ -20,6 +20,8 @@ BEQ (Fixed opcode in the decoding section)
 SW (Comments & Fixed the order of parameters in the decoding section)
 SLT (Adjusted some comments and fixed encoding locations for Rd and Rt)
 OR (Commented and formatted)
+MFHI (Fixed opcode assignment and adjusted comments)
+MFLO (Fixed opcode assignment and adjusted comments)
 
 TO DO:
-MFHI, MFLO, MULT, ORI, SLTI
+MULT, ORI, SLTI

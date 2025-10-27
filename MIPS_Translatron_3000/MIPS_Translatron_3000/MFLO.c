@@ -1,9 +1,19 @@
+/*
+* Author: Brady
+* Date: 10/27/2025
+*/
+
+/*
+* CHANGELIST
+* - Fixed opcode assignment
+* - Adjusted comments
+*/
+
 #include "Instruction.h"
 
 void mflo_reg_assm(void) {
-
+	// Check opcode
 	if (strcmp(OP_CODE, "MFLO") != 0) {
-
 		state = WRONG_COMMAND;
 		return;
 	}
@@ -18,10 +28,10 @@ void mflo_reg_assm(void) {
 		return;
 	}
 
-
 	/*
 		Checking the value of parameters
 	*/
+
 	// Rd should be 31 or less
 	if (PARAM1.value > 31) {
 		state = INVALID_REG;
@@ -31,18 +41,21 @@ void mflo_reg_assm(void) {
 	/*
 	Putting the binary together
 	*/
+
 	// Set the opcode
 	setBits_str(31, "000000");
+
+	// set 25-16 as 0s 
+	setBits_str(25, "0000000000");
+
 	// set rd
 	setBits_num(15, PARAM1.value, 5);
 
-	// Set the funct 
-	setBits_str(5, "010000");
-	// set 25-16 as 0s 
-	setBits_str(10, "000000");
-
 	// set 10-6 as 0s 
 	setBits_str(10, "00000");
+
+	// Set the funct 
+	setBits_str(5, "010010");
 
 	// tell the system the encoding is done
 	state = COMPLETE_ENCODE;
@@ -53,7 +66,7 @@ void mflo_reg_bin(void) {
 	// check_bits(start_bit, bit_string) returns 0 if the bit_string matches
 	//  any x will be skipped
 	// If the manual shows (0), then the value of that bit doesnt matter
-	if (checkBits(31, "000000") != 0 || checkBits(5, "010000") != 0 || checkBits(25, "0000000000") != 0 || checkBits(10, "00000") != 0) {
+	if (checkBits(31, "000000") != 0 || checkBits(5, "010010") != 0 || checkBits(25, "0000000000") != 0 || checkBits(10, "00000") != 0) {
 		state = WRONG_COMMAND;
 		return;
 	}
@@ -66,17 +79,19 @@ void mflo_reg_bin(void) {
 
 	// getBits(start_bit, width)
 	uint32_t Rd = getBits(15, 5);
+
 	/*
 		Setting Instuciton values
 	*/
+
+	// Set opcode
 	setOp("MFLO");
+
 	//setParam(param_num, param_type, param_value)
 	setParam(1, REGISTER, Rd); //destination
 	
-
 	// tell the system the decoding is done
 	state = COMPLETE_DECODE;
-	
 }
 
 

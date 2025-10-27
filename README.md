@@ -19,6 +19,7 @@ ANDI (Comments)
 BEQ (Fixed opcode in the decoding section)
 SW (Comments & Fixed the order of parameters in the decoding section)
 SLT (Adjusted some comments and fixed encoding locations for Rd and Rt)
+OR (Commented and formatted)
 
 TO DO:
-MFHI, MFLO, MULT, OR, ORI, SLTI
+MFHI, MFLO, MULT, ORI, SLTI

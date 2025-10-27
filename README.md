@@ -10,7 +10,7 @@ gcc ADD.c ADDI.c AND.c ANDI.c BEQ.c BNE.c DIV.c LUI.c LW.c MFHI.c MFLO.c MIPS_In
 ADD, BNE, ADDI
 
 *DONE* (solved)
-SUB (was not writting the correct final 6 bits in the opcode, corrected)
+SUB (was not writting the correct final 6 bits in the opcode, corrected; BRADY - adjusted opcode)
 LW (Comments and fixed logic for immediate check)
 LUI (Comments)
 DIV (Comments)

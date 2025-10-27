@@ -8,6 +8,7 @@
 /*
 Changelog:
 Was outputting incorrect binary in the last 6 bit of opcode
+Brady - adjusted opcode to match sheet from project file
 */
 
 #include "Instruction.h"
@@ -77,8 +78,8 @@ void sub_reg_assm(void) {
 
 	// Set the funct 
 	/*FIXED
-	adjusted bits from 100010 to 100100 for proper binary output*/
-	setBits_str(5, "100100");
+	adjusted bits from 100010 to 100010 for proper binary output*/
+	setBits_str(5, "100010");
 
 	// set Rd
 	setBits_num(15, PARAM1.value, 5);
@@ -98,7 +99,7 @@ void sub_reg_bin(void) {
 	// check_bits(start_bit, bit_string) returns 0 if the bit_string matches
 	// any x will be skipped
 	// If the manual shows (0), then the value of that bit doesnt matter
-	if (checkBits(31, "000000") != 0 || checkBits(5, "100100") != 0 ) {
+	if (checkBits(31, "000000") != 0 || checkBits(5, "100010") != 0 ) {
 		state = WRONG_COMMAND;
 		return;
 	}

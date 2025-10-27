@@ -1,8 +1,13 @@
 /*
-* Author: Ol' Jim
-* Date: 06/13/2012
+* Author: Cameron Repko
+* Date: 10/26/2025
 * ByteForge Systems
 * MIPS-Translatron 3000
+*/
+
+/*
+Changelog:
+Was outputting incorrect binary in the last 6 bit of opcode
 */
 
 #include "Instruction.h"

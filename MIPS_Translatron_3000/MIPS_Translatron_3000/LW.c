@@ -6,6 +6,7 @@
 /*
 * CHANGELIST
 * - Added comments and formatted
+* - Fixed Immediate check, was 7 and should be F
 */
 
 #include "Instruction.h"
@@ -56,7 +57,7 @@ void lw_immd_assm(void) {
 	}
 
 	// Immediate value should be 16 bits or less
-	if ( PARAM2.value > 0x7FFF) {
+	if ( PARAM2.value > 0xFFFF) {
 		state = INVALID_IMMED;
 		return;
 	}

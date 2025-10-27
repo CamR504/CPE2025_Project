@@ -11,7 +11,7 @@ ADD, BNE, ADDI
 
 *DONE* (solved)
 SUB (was not writting the correct final 6 bits in the opcode, corrected)
-LW (Comments)
+LW (Comments and fixed logic for immediate check)
 LUI (Comments)
 DIV (Comments)
 AND (Comments and fixed opcode locations for Rs/Rt)

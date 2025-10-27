@@ -1,8 +1,12 @@
 /*
-* Author: Ol' Jim
-* Date: 06/13/2012
-* ByteForge Systems
-* MIPS-Translatron 3000
+* Author: Brady
+* Date: 10/27/2025
+*/
+
+/*
+* CHANGELIST
+* - Fixed encoding locations for Rd and Rt
+* - Adjusted some comments
 */
 
 #include "Instruction.h"
@@ -71,13 +75,13 @@ void slt_reg_assm(void) {
 	setBits_str(5, "101010");
 
 	// set Rd
-	setBits_num(20, PARAM1.value, 5);
+	setBits_num(15, PARAM1.value, 5);
 
 	// set Rs
 	setBits_num(25, PARAM2.value, 5);
 
 	// set Rt
-	setBits_num(15, PARAM3.value, 5);
+	setBits_num(20, PARAM3.value, 5);
 
 	// tell the system the encoding is done
 	state = COMPLETE_ENCODE;
@@ -98,9 +102,13 @@ void slt_reg_bin(void) {
 	/*
 		Finding values in the binary
 	*/
-	// getBits(start_bit, width)
+	// get Rd
 	uint32_t Rd = getBits(15, 5);
+
+	// Get Rs
 	uint32_t Rs = getBits(25, 5);
+
+	// Get Rt
 	uint32_t Rt = getBits(20, 5);
 
 	/*

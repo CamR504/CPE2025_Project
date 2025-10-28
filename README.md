@@ -24,4 +24,5 @@ MFHI (Fixed opcode assignment and adjusted comments)
 MFLO (Fixed opcode assignment and adjusted comments)
 
 TO DO:
-MULT, ORI, SLTI
+MULT (needs to be checked against sheet)
+ORI, SLTI

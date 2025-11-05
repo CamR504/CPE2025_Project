@@ -8,6 +8,7 @@
 /*
 Changelog:
 Cam - Added in main body of code
+Brady - Fixed opcode and encode/decode scheme to match sheet
 */
 #include "Instruction.h"
 
@@ -38,12 +39,6 @@ void mult_reg_assm(void) {
 		return;
 	}
 
-	// This is SUB register, so param 3 needs to be a register
-	if (PARAM3.type != REGISTER) {
-		state = MISSING_REG;
-		return;
-	}
-
 	/*
 		Checking the value of parameters
 	*/
@@ -60,12 +55,6 @@ void mult_reg_assm(void) {
 		return;
 	}
 
-	// Rt should be 31 or less
-	if (PARAM3.value > 31) {
-		state = INVALID_REG;
-		return;
-	}
-
 	/*
 		Putting the binary together
 	*/
@@ -78,14 +67,14 @@ void mult_reg_assm(void) {
 	adjusted bits from 100010 to 100010 for proper binary output*/
 	setBits_str(5, "011000");
 
-	// set Rd
-	setBits_num(15, PARAM1.value, 5);
+	// set Rt
+	setBits_num(20, PARAM1.value, 5);
 
 	// set Rs
 	setBits_num(25, PARAM2.value, 5);
 
-	// set Rt
-	setBits_num(20, PARAM3.value, 5);
+	// Set bits 15-6 to 0
+	setBits_num(15, 0, 10);
 
 	// tell the system the encoding is done
 	state = COMPLETE_ENCODE;
@@ -107,7 +96,6 @@ void mult_reg_bin(void) {
 		Finding values in the binary
 	*/
 	// getBits(start_bit, width)
-	uint32_t Rd = getBits(15, 5);
 	uint32_t Rs = getBits(25, 5);
 	uint32_t Rt = getBits(20, 5);	
 
@@ -119,9 +107,8 @@ void mult_reg_bin(void) {
 	setOp("MULT");
 	//setCond_num(cond);
 	//setParam(param_num, param_type, param_value)
-	setParam(1, REGISTER, Rd); //destination
 	setParam(2, REGISTER, Rs); //first source register operand
-	setParam(3, REGISTER, Rt); //second source register operand
+	setParam(1, REGISTER, Rt); //second source register operand
 
 
 	// tell the system the decoding is done

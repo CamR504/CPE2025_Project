@@ -22,7 +22,10 @@ SLT (Adjusted some comments and fixed encoding locations for Rd and Rt)
 OR (Commented and formatted)
 MFHI (Fixed opcode assignment and adjusted comments)
 MFLO (Fixed opcode assignment and adjusted comments)
+MULT (Implemented; Checked and adjusted)
+ORI (Implemented)
+SLTI (Implemented)
 
 TO DO:
-MULT (needs to be checked against sheet)
-ORI, SLTI
+
+

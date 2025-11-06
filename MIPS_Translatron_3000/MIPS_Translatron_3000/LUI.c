@@ -6,6 +6,7 @@
 /*
 * CHANGELIST
 * - Added comments and formatted
+* - Made into a 1 register and one immediate instruction (Cam)
 */
 
 #include "Instruction.h"
@@ -27,14 +28,8 @@ void lui_immd_assm(void) {
 		return;
 	}
 
-	// Second parameter should be a register
-	if (PARAM2.type != REGISTER) {
-		state = MISSING_REG;
-		return;
-	}
-
-	// Third parameter should be an immediate
-	if (PARAM3.type != IMMEDIATE) {
+	// Second parameter should be an immediate
+	if (PARAM2.type != IMMEDIATE) {
 		state = INVALID_PARAM;
 		return;
 	}
@@ -49,14 +44,10 @@ void lui_immd_assm(void) {
 		return;
 	}
 
-	// Rs should be less than 31
-	if (PARAM2.value > 31) {
-		state = INVALID_REG;
-		return;
-	}
+
 
 	// Immediate should be 16 bits or less
-	if (PARAM3.value > 0xFFFF) {
+	if (PARAM2.value > 0xFFFF) {
 		state = INVALID_IMMED;
 		return;
 	}
@@ -71,11 +62,11 @@ void lui_immd_assm(void) {
 	// Set Rt
 	setBits_num(20, PARAM1.value, 5);
 
-	// Set Rs
-	setBits_num(25, PARAM2.value, 5);
+	// Set Rs as all zeros, not used
+	setBits_str(25, "00000");
 
 	// Set the immediate
-	setBits_num(15, PARAM3.value, 16);
+	setBits_num(15, PARAM2.value, 16);
 
 	// tell the system the encoding is done
 	state = COMPLETE_ENCODE;
@@ -87,13 +78,15 @@ void lui_immd_bin(void) {
 		state = WRONG_COMMAND;
 		return;
 	}
+	// Check if Rs is all zeros
+	if (checkBits(25, "00000") != 0) {
+		state = INVALID_PARAM;
+		return;
+	}
 
 	/*
 		Finding values in the binary
 	*/
-
-	// Retrieve Rs
-	uint32_t Rs = getBits(25, 5);
 
 	// Retrieve Rt
 	uint32_t Rt = getBits(20, 5);
@@ -111,11 +104,11 @@ void lui_immd_bin(void) {
 	// Set the first parameter to Rt
 	setParam(1, REGISTER, Rt); 
 
-	// Set the second parameter to Rs
-	setParam(2, REGISTER, Rs); 
+ 
 
 	// Set the immediate field
-	setParam(3, IMMEDIATE, imm16); 
+	setParam(2, IMMEDIATE, imm16); 
+	
 
 	// Tell the system the decoding is done
 	state = COMPLETE_DECODE;

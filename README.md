@@ -12,7 +12,7 @@ ADD, BNE, ADDI
 *DONE* (solved)
 SUB (was not writting the correct final 6 bits in the opcode, corrected; BRADY - adjusted opcode)
 LW (Comments and fixed logic for immediate check)
-LUI (Comments)
+LUI (Comments and fixed logic for 2 parameters)
 DIV (Comments)
 AND (Comments and fixed opcode locations for Rs/Rt)
 ANDI (Comments)
